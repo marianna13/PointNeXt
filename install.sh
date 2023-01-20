@@ -14,21 +14,20 @@
 # module load gcc/7.5.0
 
 # download openpoints
+git clone https://github.com/guochengqian/openpoints.git /content/PointNeXt/openpoints
 # git submodule add git@github.com:guochengqian/openpoints.git
-git submodule update --init --recursive
-git submodule update --remote --merge # update to the latest version
+# git submodule update --init --recursive
+# git submodule update --remote --merge # update to the latest version
 
 # install PyTorch
-conda deactivate
-conda env remove --name openpoints
-conda create -n openpoints -y python=3.7 numpy=1.20 numba
-conda activate openpoints
+
 
 # please always double check installation for pytorch and torch-scatter from the official documentation
-conda install -y pytorch=1.10.1 torchvision cudatoolkit=11.3 -c pytorch -c nvidia
-pip install torch-scatter -f https://data.pyg.org/whl/torch-1.10.1+cu113.html
+
+pip install torch-scatter -f https://data.pyg.org/whl/torch-1.13.0+cu116.html
 
 pip install -r requirements.txt
+pip install shortuuid
 
 # install cpp extensions, the pointnet++ library
 cd openpoints/cpp/pointnet2_batch
